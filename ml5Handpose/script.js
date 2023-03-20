@@ -5,6 +5,47 @@ let topPomme;
 let score = 0;
 let hands = [];
 
+const displayScore = document.getElementById("score");
+const interScore = document.getElementById("inter");
+displayScore.innerHTML = "Score = 0 ";
+
+var centi = 0;
+var mili = 0;
+var sec = 0;
+var sec_;
+var afficher;
+var compteur;
+// affichage du compteur à 0
+document.getElementById('timer').innerHTML = "0" + sec + ":" + "0" + mili;
+
+function chrono() {
+  setInterval(function (){
+    mili++;
+    if (mili > 9) {
+      mili = 0;
+    }
+  }, 1);
+  centi++;
+  centi*10;//=======pour passer en dixièmes de sec
+  //=== on remet à zéro quand on passe à 1seconde
+  if (centi > 9) {
+    centi = 0;
+    sec++;
+  }  
+  if (sec < 10) {
+    sec_ = "0" + sec;
+  }
+  else {
+    sec_ = sec;
+  }
+  afficher = sec_ + ":" + centi + mili;
+  document.getElementById("timer").innerHTML = afficher;
+  reglage = window.setTimeout("chrono();",100);
+}
+
+
+
+
 function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO);
@@ -23,6 +64,7 @@ function setup() {
 }
 
 function modelReady() {
+  chrono();
   console.log("Model ready!");
 }
 
@@ -67,7 +109,13 @@ function Grabbed(){
         console.log(hands[0].landmarks[20])
         if(count>15){
           score +=1;
-          console.log(score)
+          console.log("score : " + score)
+          
+          displayScore.innerHTML = "Score = " + score ;
+          const display = document.createElement("li")
+          display.innerHTML = afficher + " Score " + score;
+          interScore.appendChild(display);
+
           document.getElementById("pomme").remove();
         };
         }
