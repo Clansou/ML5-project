@@ -13,4 +13,4 @@ When the model is ready, objects will appear on the screen, and the chrono start
 The game uses the ML5.js machine learning library for hand motion recognition and the p5.js library for graphics rendering. The code is written in JavaScript and HTML.
 
 ### Authors
-Oscar DARTIGUES, [Clément SOUPLET](https://github.com/Clansou), [Ambroise PIETU](https://github.com/FrAmbroise)
+[Oscar DARTIGUES](https://github.com/Scarboule), [Clément SOUPLET](https://github.com/Clansou), [Ambroise PIETU](https://github.com/FrAmbroise)
